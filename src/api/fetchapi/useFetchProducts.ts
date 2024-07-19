@@ -13,20 +13,66 @@ interface Product {
   modifiedAt: number;
 }
 
+// const useFetchProducts = () => {
+//   const [data, setData] = useState<Product[]>([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const response = await axios.get(api.productURL);
+//       setData(response.data);
+//     };
+//     fetchData();
+//     console.log('Load Data');
+//     return console.log('Clean');
+//   }, []);
+
+//   return {data};
+// };
+
+// const useFetchProducts = () => {
+//   const [data, setData] = useState<Product[]>([]);
+
+//   const fetchData = async () => {
+//     try {
+//       const response = await axios.get(api.productURL);
+//       setData(response.data);
+//     } catch (err) {}
+//   };
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   return {data};
+// };
+
+// const useFetchProducts = () => {
+//   const [data, setData] = useState<Product[]>([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const response = await fetch(api.productURL);
+//       const result = await response.json();
+//       setData(result);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return {data};
+// };
+
 const useFetchProducts = () => {
   const [data, setData] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
+    try {
       const response = await axios.get(api.productURL);
       setData(response.data);
-    };
-    fetchData();
-    console.log('Load Data');
-    return console.log('Clean');
-  }, []);
+    } catch (err) {}
+  };
 
-  return {data};
+  return {data, fetchData};
 };
 
 export default useFetchProducts;

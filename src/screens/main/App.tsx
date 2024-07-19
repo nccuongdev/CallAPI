@@ -3,9 +3,14 @@ import React, {useEffect, useState} from 'react';
 import ProductItem from '../../components/ProductItem';
 import axios from 'axios';
 import useFetchProducts from '../../api/fetchapi/useFetchProducts';
+import getProductFromApi from '../../api/fetchapi/useFetchProducts';
 
 export default function App() {
-  const {data: products} = useFetchProducts();
+  const {data: products, fetchData} = getProductFromApi();
+
+  useEffect(() => {
+    fetchData();
+  });
 
   return (
     <View style={styles.container}>

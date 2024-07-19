@@ -1,3 +1,3 @@
 export const api = {
-  productURL: 'http://172.20.10.2:8000/products',
+  productURL: 'http://192.168.31.78:8000/products',
 };
